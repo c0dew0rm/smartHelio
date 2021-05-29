@@ -9,7 +9,7 @@ export class GetAllDeviceDataService {
   constructor(private http: HttpClient ,) { }
 
   getAllData() {
-    return this.http.get<any>('http://localhost:4040/api/getAllDevice');
+    return this.http.get<any>('http://54.164.146.105/api/getAllDevice');
   }
 
   getDeviceData(id,startDateEpoch,endDateEpoch) {
@@ -18,7 +18,7 @@ export class GetAllDeviceDataService {
       startDate:startDateEpoch,
       endDate:endDateEpoch
     }
-    return this.http.post('http://localhost:4040/api/getData',  body);
+    return this.http.post('http://54.164.146.105/api/getData',  body);
   }
 
 }
