@@ -1,0 +1,37 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-card size="giant">
+      <nb-card-body>
+        <div class="row">
+          <div class="col">
+            <nb-select placeholder="Select" (selectedChange)="onSelection($event)">
+              <nb-option [value]="selected" *ngFor="let selected of selectionOption">{{selected}}</nb-option>
+            </nb-select>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="StartDate" id="startDate" placeholder="From" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="EndDate" id="endDate" placeholder="End Date" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+          </div>
+          <div class="col">
+            <button nbButton status="primary" (click)="GetData()">Get</button>
+          </div>
+        </div>
+        <div *ngIf="showGraph" class="row">
+          <div style="display: block;">
+            <canvas baseChart width="1400" height="400"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+            </canvas>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
+<router-outlet></router-outlet>
